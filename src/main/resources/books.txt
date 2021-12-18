@@ -1,5 +1,5 @@
 0; 123123123AAA; Fire in the boreal forests; Science; Tuomas Aakala; 150; 2022; Springer
-1; 9780735222359; The Lincoln Highway; Novel;  Amor Towles; 592; 2021; Penguin Publishing Group
+1; 9780735222359; The Lincoln Highway; Novel; Amor Towles; 592; 2021; Penguin Publishing Group
 2; 9781982168438; Cloud Cuckoo Land; Novel; Anthony Doerr; 640; 2021; Scribner
 3; B08337YMN8; The Principles of Palaeoecology; Popular Science; Normunds Stivrins; 75; 2019; Amazon Kindle Unlimited
 4; 9780316449366; Night Train: New and Selected Stories; Stories; Thom Jones; 432; 2019; Brown and Company
