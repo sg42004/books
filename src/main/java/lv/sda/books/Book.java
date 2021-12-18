@@ -22,13 +22,9 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() {return id; }
 
-    public String getIsbn() {
-        return isbn;
-    }
+    public String getIsbn() {return isbn;}
 
     public Book setIsbn(String isbn) {
         this.isbn = isbn;

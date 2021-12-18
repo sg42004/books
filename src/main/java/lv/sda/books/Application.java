@@ -1,8 +1,17 @@
 package lv.sda.books;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.Collections;
+
+import static java.util.stream.Collectors.toList;
 
 public class Application {
 
@@ -11,6 +20,24 @@ public class Application {
     public static void main(String[] args) {
 
         try {
+            Path path = Paths.get("src/main/resources/books.txt");
+            List<Book> books = Files.lines(path)
+                    .map(line -> {
+                        List<String> fields = Arrays.stream(line.split(";")).collect(toList());
+                         return new Book(
+                                Integer.parseInt(fields.get(0)),
+                                fields.get(1),
+                                fields.get(2),
+                                fields.get(3),
+                                fields.get(4),
+                                Integer.parseInt(fields.get(5)),
+                                Integer.parseInt(fields.get(6)),
+                                fields.get(7)
+                                //LocalDate.of(Integer.parseInt(fields.get(6)), 1, 1),                        );
+                        );
+                    })
+                    .collect(Collectors.toList());
+                books.forEach(System.out::println);
 
         } catch (Exception e) {
             System.out.println("An error occurred.");
@@ -72,7 +99,8 @@ public class Application {
                     break;
 
                 case "3":
-                    System.out.println("Input isbn of the book to remove:");
+                    System.out.println("Removing a book");
+                    System.out.println("Provide isbn of the book to remove:");
                     scanner.nextLine();
                     System.out.println("Book removed successfully.");
                     break;
