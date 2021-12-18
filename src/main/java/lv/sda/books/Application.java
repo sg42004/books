@@ -1,5 +1,7 @@
 package lv.sda.books;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Application {
@@ -36,15 +38,48 @@ public class Application {
                     System.out.println("Searching for a book");
                     break;
                 case "2":
-                    System.out.println("Adding a book");
+
+                    System.out.println("Input the following information");
+                    System.out.println("The isbn:");
+                    String isbn2 = scanner.nextLine();
+                    System.out.println("The title:");
+                    String title = scanner.nextLine();
+                    System.out.println("The description:");
+                    String description = scanner.nextLine();
+                    System.out.println("The author:");
+                    String author = scanner.nextLine();
+                    System.out.println("The page count:");
+                    String pages = scanner.nextLine();
+                    System.out.println("The publishing year:");
+                    String year = scanner.nextLine();
+                    System.out.println("The publisher:");
+                    String publisher = scanner.nextLine();
+
+                    System.out.println("Adding the book");
+
+                    try {
+                        FileWriter fw = new FileWriter("src/main/resources/books.txt", true);
+                        BufferedWriter bw = new BufferedWriter(fw);
+                        bw.write(isbn2 + ", " + title + ", " + description + ", " + author + ", " + pages + ", " + year + ", " + publisher);
+                        bw.newLine();
+                        bw.close();
+                        System.out.println("Book added successfully.");
+                    } catch (Exception e) {
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
+                    }
+
                     break;
+
                 case "3":
-                    System.out.println("Removing a book");
-                    System.out.println("Provide isbm of the book to remove:");
+                    System.out.println("Input isbn of the book to remove:");
                     scanner.nextLine();
+                    System.out.println("Book removed successfully.");
                     break;
                 case "4":
                     System.out.println("Getting book info");
+                    System.out.println("Input isbn of the book to find:");
+                    scanner.nextLine();
                     break;
                 case "5":
                     System.out.println("Listing available books:");
