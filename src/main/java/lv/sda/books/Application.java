@@ -16,7 +16,8 @@ public class Application {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        Bookstore bookstore = new Bookstore();
         try {
             Scanner s = new Scanner(new File("src/main/resources/books.txt"));
             ArrayList<String> list = new ArrayList<>();
@@ -25,13 +26,12 @@ public class Application {
             }
             s.close();
 
-            System.out.println(list);
+         //   System.out.println(list);
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-
         try {
-            Path path = Paths.get("src/main/resources/books.txt"); //visu par String
+            Path path = Paths.get("src/main/resources/books.txt");
             List<Book> books = Files.lines(path)
                     .map(line -> {
                         List<String> fields = Arrays.stream(line.split(";")).collect(toList());
@@ -113,9 +113,7 @@ public class Application {
                     System.out.println("Book removed successfully.");
                     break;
                 case "4":
-                    System.out.println("Getting book info");
-                    System.out.println("Input isbn of the book to find:");
-                    scanner.nextLine();
+                    Bookstore.getInfo();
                     break;
                 case "5":
                     System.out.println("Listing available books:");
@@ -140,10 +138,6 @@ public class Application {
         }
     }
 
-
-    /*
-    viens
-}*/
 
 
 }
