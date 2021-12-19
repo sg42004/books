@@ -25,13 +25,12 @@ public class Application {
             }
             s.close();
 
-            System.out.println(list);
+         //   System.out.println(list);
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-
         try {
-            Path path = Paths.get("src/main/resources/books.txt"); //visu par String
+            Path path = Paths.get("src/main/resources/books.txt");
             List<Book> books = Files.lines(path)
                     .map(line -> {
                         List<String> fields = Arrays.stream(line.split(";")).collect(toList());

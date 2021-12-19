@@ -9,4 +9,4 @@ B08337YMN8;The Principles of Palaeoecology;Popular Science;Normunds Stivrins;75;
 9780063028982;The Collected Works of Jim Morrison: Poetry, Journals, Transcripts, and Lyrics;Music; Jim Morrison;584;2021;HarperCollins Publishers
 9781250265593;The Guilt Trip;Thriller;Sandie Jones;320;2021;St. Martin's Publishing Group
 9780062868954;The Guest List;Thriller;Lucy Foley;336;2020;HarperCollins Publishers
-1232321231233:Latvija Zeme Daba Tauta: Ezeru katlienes;Popular science;Normunds Stivrins;3;2018;Latvijas Universitate
+1232321231233;Latvija Zeme Daba Tauta: Ezeru katlienes;Popular science;Normunds Stivrins;3;2018;Latvijas Universitate
