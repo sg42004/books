@@ -1,5 +1,7 @@
 package lv.sda.books;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,11 +35,9 @@ public class Application {
                                 Integer.parseInt(fields.get(5)),
                                 Integer.parseInt(fields.get(6)),
                                 fields.get(7)
-                                //LocalDate.of(Integer.parseInt(fields.get(6)), 1, 1),                        );
                         );
                     })
                     .collect(Collectors.toList());
-                books.forEach(System.out::println);
 
         } catch (Exception e) {
             System.out.println("An error occurred.");
@@ -111,6 +111,18 @@ public class Application {
                     break;
                 case "5":
                     System.out.println("Listing available books:");
+                    try {
+                        File myObj = new File("src/main/resources/books.txt");
+                        Scanner myReader = new Scanner(myObj);
+                        while (myReader.hasNextLine()) {
+                            String data = myReader.nextLine();
+                            System.out.println(data);
+                        }
+                        myReader.close();
+                    } catch (FileNotFoundException e) {
+                        System.out.println("An error occurred.");
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     System.out.println("Wrong input, please try again.");
