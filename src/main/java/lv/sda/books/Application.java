@@ -22,19 +22,18 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            Path path = Paths.get("src/main/resources/books.txt");
+            Path path = Paths.get("src/main/resources/books.txt"); //visu par String
             List<Book> books = Files.lines(path)
                     .map(line -> {
                         List<String> fields = Arrays.stream(line.split(";")).collect(toList());
                          return new Book(
-                                Integer.parseInt(fields.get(0)),
+                                fields.get(0),
                                 fields.get(1),
                                 fields.get(2),
                                 fields.get(3),
-                                fields.get(4),
+                                Integer.parseInt(fields.get(4)),
                                 Integer.parseInt(fields.get(5)),
-                                Integer.parseInt(fields.get(6)),
-                                fields.get(7)
+                                fields.get(6)
                         );
                     })
                     .collect(Collectors.toList());

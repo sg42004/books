@@ -1,11 +1,12 @@
-0; 123123123AAA; Fire in the boreal forests; Science; Tuomas Aakala; 150; 2022; Springer
-1; 9780735222359; The Lincoln Highway; Novel; Amor Towles; 592; 2021; Penguin Publishing Group
-2; 9781982168438; Cloud Cuckoo Land; Novel; Anthony Doerr; 640; 2021; Scribner
-3; B08337YMN8; The Principles of Palaeoecology; Popular Science; Normunds Stivrins; 75; 2019; Amazon Kindle Unlimited
-4; 9780316449366; Night Train: New and Selected Stories; Stories; Thom Jones; 432; 2019; Brown and Company
-5; 978-2-503-55133-3; Ecologies of Crusading, Colonization and religious conversion in the medieval Baltic; Science; Aleksander Pluskowski; 242; 2019; Brepols
-6; 978-1032177151; Bayesian Hierarchical Models; Science; Peter Congdon; 592; 2021; Amazon Kindle Unlimited
-7; 9781631492563; The Lyrics: 1956 to the Present; Music; Paul MacCartney; 960; 2021; Liveright Publishing Corporation
-8; 9780063028982; The Collected Works of Jim Morrison: Poetry, Journals, Transcripts, and Lyrics; Music; Jim Morrison; 584; 2021; HarperCollins Publishers
-9; 9781250265593; The Guilt Trip; Thriller; Sandie Jones; 320; 2021; St. Martin's Publishing Group
-10; 9780062868954; The Guest List; Thriller; Lucy Foley; 336; 2020; HarperCollins Publishers
+123123123AAA;Fire in the boreal forests;Science;Tuomas Aakala;150;2022;Springer
+9780735222359;The Lincoln Highway;Novel;Amor Towles;592;2021;Penguin Publishing Group
+9781982168438;Cloud Cuckoo Land;Novel;Anthony Doerr;640;2021;Scribner
+B08337YMN8;The Principles of Palaeoecology;Popular Science;Normunds Stivrins;75;2019;Amazon Kindle Unlimited
+9780316449366;Night Train: New and Selected Stories;Stories;Thom Jones;432;2019;Brown and Company
+978-2-503-55133-3;Ecologies of Crusading in the medieval Baltic;Science;Aleksander Pluskowski;242;2019;Brepols
+978-1032177151;Bayesian Hierarchical Models;Science;Peter Congdon;592;2021;Amazon Kindle Unlimited
+9781631492563;The Lyrics:1956 to the Present;Music;Paul MacCartney;960;2021;Liveright Publishing Corporation
+9780063028982;The Collected Works of Jim Morrison: Poetry, Journals, Transcripts, and Lyrics;Music; Jim Morrison;584;2021;HarperCollins Publishers
+9781250265593;The Guilt Trip;Thriller;Sandie Jones;320;2021;St. Martin's Publishing Group
+9780062868954;The Guest List;Thriller;Lucy Foley;336;2020;HarperCollins Publishers
+1232321231233:Latvija Zeme Daba Tauta: Ezeru katlienes;Popular science;Normunds Stivrins;3;2018;Latvijas Universitate

@@ -2,7 +2,7 @@ package lv.sda.books;
 
 public class Book {
 
-    private int id;
+
     private String isbn;
     private String title;
     private String description;
@@ -11,8 +11,8 @@ public class Book {
     private int publishingYear;
     private String publisher;
 
-    public Book(int id, String isbn, String title, String description, String author, int pages, int publishingYear, String publisher) {
-        this.id = id;
+    public Book(String isbn, String title, String description, String author, int pages, int publishingYear, String publisher) {
+
         this.isbn = isbn;
         this.title = title;
         this.description = description;
@@ -22,7 +22,7 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getId() {return id; }
+
 
     public String getIsbn() {return isbn;}
 
