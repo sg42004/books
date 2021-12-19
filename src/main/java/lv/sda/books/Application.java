@@ -16,7 +16,8 @@ public class Application {
 
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
+        Bookstore bookstore = new Bookstore();
         try {
             Scanner s = new Scanner(new File("src/main/resources/books.txt"));
             ArrayList<String> list = new ArrayList<>();
@@ -112,9 +113,7 @@ public class Application {
                     System.out.println("Book removed successfully.");
                     break;
                 case "4":
-                    System.out.println("Getting book info");
-                    System.out.println("Input isbn of the book to find:");
-                    scanner.nextLine();
+                    Bookstore.getInfo();
                     break;
                 case "5":
                     System.out.println("Listing available books:");
@@ -139,10 +138,6 @@ public class Application {
         }
     }
 
-
-    /*
-    viens
-}*/
 
 
 }
