@@ -5,13 +5,10 @@ import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.Collections;
 
 import static java.util.stream.Collectors.toList;
 
@@ -20,6 +17,18 @@ public class Application {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        try {
+            Scanner s = new Scanner(new File("src/main/resources/books.txt"));
+            ArrayList<String> list = new ArrayList<>();
+            while (s.hasNextLine()) {
+                list.add(s.nextLine());
+            }
+            s.close();
+
+            System.out.println(list);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found");
+        }
 
         try {
             Path path = Paths.get("src/main/resources/books.txt");
