@@ -6,8 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -30,27 +28,6 @@ public class Application {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        try {
-            Path path = Paths.get("src/main/resources/books.txt");
-            List<Book> books = Files.lines(path)
-                    .map(line -> {
-                        List<String> fields = Arrays.stream(line.split(";")).collect(toList());
-                         return new Book(
-                                fields.get(0),
-                                fields.get(1),
-                                fields.get(2),
-                                fields.get(3),
-                                Integer.parseInt(fields.get(4)),
-                                Integer.parseInt(fields.get(5)),
-                                fields.get(6)
-                        );
-                    })
-                    .collect(Collectors.toList());
-
-        } catch (Exception e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
 
         while (true) {
             System.out.println("Menu");
@@ -70,10 +47,10 @@ public class Application {
 
             switch (input) {
                 case "1":
-                    System.out.println("Searching for a book");
+                    bookstore.searchBook();
                     break;
                 case "2":
-                    Bookstore.addBook();
+                    bookstore.addBook();
                     break;
 
                 case "3":
@@ -83,22 +60,10 @@ public class Application {
                     System.out.println("Book removed successfully.");
                     break;
                 case "4":
-                    Bookstore.getInfo();
+                    bookstore.getInfo();
                     break;
                 case "5":
-                    System.out.println("Listing available books:");
-                    try {
-                        File myObj = new File("src/main/resources/books.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
-                    }
+                    bookstore.allBooks();
                     break;
                 default:
                     System.out.println("Wrong input, please try again.");

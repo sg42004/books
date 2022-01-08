@@ -84,4 +84,17 @@ public class Book {
         this.publisher = publisher;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", pages=" + pages +
+                ", publishingYear=" + publishingYear +
+                ", publisher='" + publisher + '\'' +
+                '}';
+    }
 }

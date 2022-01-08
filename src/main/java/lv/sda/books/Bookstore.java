@@ -1,5 +1,6 @@
 package lv.sda.books;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +17,8 @@ import static java.util.stream.Collectors.toList;
 
 public class Bookstore {
 
-    List<Book> books;
+    private List<Book> books = new ArrayList<>();
+
     public Bookstore(){
         try {
             Path path = Paths.get("src/main/resources/books.txt");
@@ -34,17 +36,26 @@ public class Bookstore {
                         );
                     })
                     .collect(Collectors.toList());
-            books.addAll(books);
+            this.books.addAll(books);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void addBook() {
+    public void addBook() {
         System.out.println("Input the following information");
         Scanner scanner = new Scanner(System.in);
         System.out.println("The isbn:");
         String isbn = scanner.nextLine();
+
+        // klases class Car {
+        //   String krasa; // mainigie jeb lauki kas veido datu struktūru
+        //   String numurs;
+
+        // }
+        String text; // šī definīcija (vērtība ir null)
+        text = "text"; // šī ir inicializācija (vērtība ir text)
+
         System.out.println("The title:");
         String title = scanner.nextLine();
         System.out.println("The description:");
@@ -60,27 +71,15 @@ public class Bookstore {
 
         System.out.println("Adding the book");
 
-        try {
-            FileWriter fw = new FileWriter("src/main/resources/books.txt", true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(isbn + ", " + title + ", " + description + ", " + author + ", " + pages + ", " + year + ", " + publisher);
-            bw.newLine();
-            bw.close();
-            System.out.println("Book added successfully.");
-        } catch (Exception e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+        Book newBook = new Book(isbn, title, description, author, Integer.parseInt(pages), Integer.parseInt(year), publisher);
+        books.add(newBook);
     }
 
     public void removeBook(String isbn){
 
     }
 
-
-
-
-    public static void getInfo() throws FileNotFoundException {
+    public void getInfo() {
         System.out.println("Please insert ISBN of the book you are looking for: ");
         Scanner scanner = new Scanner(System.in);
         String isbn = scanner.nextLine();
@@ -88,6 +87,11 @@ public class Bookstore {
             String line = scanner.nextLine().toLowerCase(Locale.ROOT);
             if (line.contains(isbn)) {
                 System.out.println(line);
+                break;
+            } else {
+                System.out.println("Book not found. Select options: ");
+                System.out.println("Return to main menu -> type: 1 ");
+                System.out.println("Quit bookstore -> type: q");
             }
         }
     }
@@ -105,15 +109,41 @@ public class Bookstore {
 
 
 
-    public List<Book> searchBook(String query){
-        System.out.println("Type name of the book you are looking for: ");
+    public List<Book> searchBook() {
+        System.out.println("Type title of the book you are looking for: ");
+        Scanner scanner = new Scanner(System.in);
+        String search = scanner.nextLine();
+        List<Book> results = new ArrayList<>(); // iepirkumu grozs
+        for (Book book: books) {
+            if (book.getTitle().toLowerCase().contains(search.toLowerCase())){ // šeit jūs atrodat preci
+                results.add(book);// jāieliek grozā
+            }
+        }
 
-        return Collections.emptyList();
+        if(results.isEmpty()){
+            System.out.println("Unfortunately, there is no such book with title " + search);
+        } else {
+            System.out.println("Book has been found. Total there are " + results.size() + " books.");
+        }
+
+        return results; //kase, un ejat uz mājām
     }
+
+/*    public static void searchBook(){
+        System.out.println("Type title of the book");
+        Scanner scanner = new Scanner(System.in);
+        String searchForBook = scanner.nextLine();
+        if()
+    }*/
 
     public List<Book> allBooks(){
-        return Collections.emptyList();
+        System.out.println("Listing available books:");
+        books.forEach(System.out::println);
+        return books;
     }
+
+
+
 
 
 }
