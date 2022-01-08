@@ -1,5 +1,6 @@
 package lv.sda.books;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -63,8 +64,8 @@ public class Bookstore {
         try {
             FileWriter fw = new FileWriter("src/main/resources/books.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(isbn + ", " + title + ", " + description + ", " + author + ", " + pages + ", " + year + ", " + publisher);
             bw.newLine();
+            bw.write(isbn + ", " + title + ", " + description + ", " + author + ", " + pages + ", " + year + ", " + publisher);
             bw.close();
             System.out.println("Book added successfully.");
         } catch (Exception e) {
@@ -111,7 +112,20 @@ public class Bookstore {
         return Collections.emptyList();
     }
 
-    public List<Book> allBooks(){
+    public static List<Book> allBooks(){
+        System.out.println("Listing available books:");
+        try {
+            File myObj = new File("src/main/resources/books.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         return Collections.emptyList();
     }
 
