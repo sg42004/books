@@ -86,19 +86,7 @@ public class Application {
                     Bookstore.getInfo();
                     break;
                 case "5":
-                    System.out.println("Listing available books:");
-                    try {
-                        File myObj = new File("src/main/resources/books.txt");
-                        Scanner myReader = new Scanner(myObj);
-                        while (myReader.hasNextLine()) {
-                            String data = myReader.nextLine();
-                            System.out.println(data);
-                        }
-                        myReader.close();
-                    } catch (FileNotFoundException e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
-                    }
+                    Bookstore.allBooks();
                     break;
                 default:
                     System.out.println("Wrong input, please try again.");
