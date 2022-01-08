@@ -73,37 +73,7 @@ public class Application {
                     System.out.println("Searching for a book");
                     break;
                 case "2":
-
-                    System.out.println("Input the following information");
-                    System.out.println("The isbn:");
-                    String isbn2 = scanner.nextLine();
-                    System.out.println("The title:");
-                    String title = scanner.nextLine();
-                    System.out.println("The description:");
-                    String description = scanner.nextLine();
-                    System.out.println("The author:");
-                    String author = scanner.nextLine();
-                    System.out.println("The page count:");
-                    String pages = scanner.nextLine();
-                    System.out.println("The publishing year:");
-                    String year = scanner.nextLine();
-                    System.out.println("The publisher:");
-                    String publisher = scanner.nextLine();
-
-                    System.out.println("Adding the book");
-
-                    try {
-                        FileWriter fw = new FileWriter("src/main/resources/books.txt", true);
-                        BufferedWriter bw = new BufferedWriter(fw);
-                        bw.write(isbn2 + ", " + title + ", " + description + ", " + author + ", " + pages + ", " + year + ", " + publisher);
-                        bw.newLine();
-                        bw.close();
-                        System.out.println("Book added successfully.");
-                    } catch (Exception e) {
-                        System.out.println("An error occurred.");
-                        e.printStackTrace();
-                    }
-
+                    Bookstore.addBook();
                     break;
 
                 case "3":
