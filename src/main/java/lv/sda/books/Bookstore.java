@@ -15,13 +15,11 @@ import static java.util.stream.Collectors.toList;
 
 public class Bookstore {
 
-    // Upload file to array list
     public List<Book> booksList = new ArrayList<>();
-
     public Bookstore() {
-        readBooksFromFile("src\\main\\resources\\BookList.csv");
+        readBooksFromFile("src\\main\\resources\\books.txt");
     }
-
+//src/main/resources/books.txt
     public Bookstore(String file) {
         readBooksFromFile(file);
     }
@@ -37,9 +35,9 @@ public class Bookstore {
                         fields.get(1),
                         fields.get(2),
                         fields.get(3),
-                        fields.get(4),
+                        Integer.parseInt(fields.get(4)),
                         Integer.parseInt(fields.get(5)),
-                        Integer.parseInt(fields.get(6))
+                        fields.get(6)
                 );
             }).collect(Collectors.toList());
             booksList.addAll(books);
@@ -48,99 +46,62 @@ public class Bookstore {
         }
     }
 
-    // Get book list
     public void printList(){
         System.out.println("Book list:");
-        for (Book i : booksList){
-            System.out.println(i);
+        for (Book book : booksList){
+            System.out.println(book);
         }
     }
 
-    // Add book
-    public void addBook(Book i) {
+    public void addBook(Book book) {
         boolean isDuplicate= false;
         for(int j = 0; j < booksList.size(); j++){
-            if(!(i.getIsbn().equals(booksList.get(j).getIsbn()))){
+            if(!(book.getIsbn().equals(booksList.get(j).getIsbn()))){
             } else {
                 isDuplicate = true;
                 System.out.println("This book already exists!");
             }
         }
         if(!isDuplicate){
-            booksList.add(i);
-            System.out.println("Book successfully added to the database.");
+            booksList.add(book);
+            System.out.println("Book successfully added to the bookstore.");
         }
     }
 
-    // Remove book
     public void removeBook(String isbn) {
         Book one = booksList.stream().filter
                 (y -> y.getIsbn().equals(isbn)).findFirst().orElse(null);
         if (one != null) {
             booksList.remove(one);
-            System.out.println("Book successfully removed from database.");
+            System.out.println("Book successfully removed from bookstore.");
         } else {
-            System.out.println("Record not found!");
+            System.out.println("There is no such book.");
         }
     }
 
-    // Find book by isbn
-    public boolean findByIsbn(String isbn) {
-        boolean x = false;
-        for (Book i : booksList) {
-            if (i.getIsbn().equals(isbn)) {
-                System.out.println(i);
-                x = true;
-            }
+    public boolean find(String query) {
+        boolean found = booksList.stream()
+                .filter(book -> book.toString().contains(query))
+                .peek(System.out::println)
+                .findAny()
+                .isPresent();
+        if (!found) {
+            System.out.println("There is no book in the bookstore with given isbn.");
         }
-        if (!x) {
-            System.out.println("Record not found!");
-        }
-        return x;
+        return found;
     }
 
-    // Find book by title
-    public boolean findByTitle(String title) {
-        boolean x = false;
-        for(Book i : booksList){
-            if(i.getTitle().equalsIgnoreCase(title)){
-                System.out.println(i);
-                x = true;
-            }
-        }
-        if (!x){
-            System.out.println("Record not found!");
-        }
-        return x;
-    }
-
-    // Save to file
-    public void deleteFile()
-            throws IOException{
-        File file = new File("src\\main\\resources\\BookList.csv");
+    public void deleteFile(){
+        File file = new File ("src\\main\\resources\\books.txt");
         file.delete();
     }
 
-    public void saveData(String fileName, String text, boolean append )
-            throws IOException{
-        File file = new File(fileName);
-        FileWriter fw = new FileWriter(file, append);
-        PrintWriter pw = new PrintWriter(fw);
-        pw.println(text);
-        pw.close();
-    }
-
-    public void saveToFile() throws IOException {
-        for(int i = 0; i < booksList.size(); i++){
-            String dataToSave = booksList.get(i).getIsbn()
-                    +";"+booksList.get(i).getTitle()
-                    +";"+booksList.get(i).getAuthor()
-                    +";"+booksList.get(i).getPublisher()
-                    +";"+booksList.get(i).getGenre()
-                    +";"+booksList.get(i).getPages()
-                    +";"+booksList.get(i).getPublishingYear();
-
-            saveData("src\\main\\resources\\BookList.csv", dataToSave,true);
+    public void saveToFile() {
+        try {
+            Path path = Paths.get("src\\main\\resources\\books.txt");
+            Files.write(path, booksList.stream().map(Book::toString).collect(Collectors.toList()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

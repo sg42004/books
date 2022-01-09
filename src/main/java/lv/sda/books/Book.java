@@ -1,38 +1,30 @@
 package lv.sda.books;
 
 public class Book {
-
-
     private String isbn;
     private String title;
-    private String description;
+    private String genre;
     private String author;
+    private String publisher;
     private int pages;
     private int publishingYear;
-    private String publisher;
 
-    public Book(String isbn, String title, String description, String author, int pages, int publishingYear, String publisher) {
-
-        this.isbn = isbn;
-        this.title = title;
-        this.description = description;
-        this.author = author;
-        this.pages = pages;
-        this.publishingYear = publishingYear;
-        this.publisher = publisher;
+    public Book() {
     }
 
-
-
-    public String getIsbn() {return isbn;}
+    public Book(String isbn, String title, String genre, String author, int pages, int publishingYear, String publisher) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.genre = genre;
+        this.pages = pages;
+        this.publishingYear = publishingYear;
+    }
 
     public Book setIsbn(String isbn) {
         this.isbn = isbn;
         return this;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public Book setTitle(String title) {
@@ -40,26 +32,19 @@ public class Book {
         return this;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Book setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
     public Book setAuthor(String author) {
         this.author = author;
         return this;
     }
 
-    public int getPages() {
-        return pages;
+    public Book setPublisher(String publisher) {
+        this.publisher = publisher;
+        return this;
+    }
+
+    public Book setGenre(String genre) {
+        this.genre = genre;
+        return this;
     }
 
     public Book setPages(int pages) {
@@ -67,21 +52,49 @@ public class Book {
         return this;
     }
 
-    public int getPublishingYear() {
-        return publishingYear;
-    }
-
     public Book setPublishingYear(int publishingYear) {
         this.publishingYear = publishingYear;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return String.join(";",
+                isbn,
+                title,
+                genre,
+                author,
+                Integer.valueOf(pages).toString(),
+                Integer.valueOf(publishingYear).toString(),
+                publisher
+                );
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
     public String getPublisher() {
         return publisher;
     }
 
-    public Book setPublisher(String publisher) {
-        this.publisher = publisher;
-        return this;
+    public String getGenre() {
+        return genre;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public int getPublishingYear() {
+        return publishingYear;
     }
 }
